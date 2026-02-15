@@ -130,10 +130,9 @@ export interface ClientToServerEvents {
 
 export interface Stats {
   onlineUsers: number;
-  activeMatches: number;
+  totalMatches: number;
   totalUsers: number;
-  averageWaitTime: number;
-  peakHours: number[];
+  countries: number;
 }
 
 export interface ErrorResponse {

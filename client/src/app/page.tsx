@@ -7,13 +7,7 @@ import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useAuthStore } from '@/stores/authStore';
 import { useSocketStore } from '@/stores/socketStore';
-
-interface Stats {
-  onlineUsers: number;
-  totalMatches: number;
-  totalUsers: number;
-  countries: number;
-}
+import { Stats } from '@/../shared/types';
 
 export default function HomePage() {
   const [stats, setStats] = useState<Stats>({
