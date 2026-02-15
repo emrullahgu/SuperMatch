@@ -1,0 +1,78 @@
+# Docker Compose - SuperMatch Full Stack
+
+version: '3.8'
+
+services:
+  # MongoDB Database
+  mongodb:
+    image: mongo:7.0
+    container_name: supermatch-mongodb
+    restart: unless-stopped
+    environment:
+      MONGO_INITDB_DATABASE: supermatch
+    ports:
+      - '27017:27017'
+    volumes:
+      - mongodb_data:/data/db
+    networks:
+      - supermatch-network
+
+  # Redis Cache
+  redis:
+    image: redis:7-alpine
+    container_name: supermatch-redis
+    restart: unless-stopped
+    ports:
+      - '6379:6379'
+    volumes:
+      - redis_data:/data
+    networks:
+      - supermatch-network
+
+  # Backend Server
+  server:
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    container_name: supermatch-server
+    restart: unless-stopped
+    ports:
+      - '5000:5000'
+    environment:
+      - NODE_ENV=production
+      - PORT=5000
+      - MONGODB_URI=mongodb://mongodb:27017/supermatch
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+    depends_on:
+      - mongodb
+      - redis
+    volumes:
+      - ./server/logs:/app/logs
+    networks:
+      - supermatch-network
+
+  # Frontend Client
+  client:
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    container_name: supermatch-client
+    restart: unless-stopped
+    ports:
+      - '3000:3000'
+    environment:
+      - NEXT_PUBLIC_API_URL=http://localhost:5000
+      - NEXT_PUBLIC_SOCKET_URL=http://localhost:5000
+    depends_on:
+      - server
+    networks:
+      - supermatch-network
+
+networks:
+  supermatch-network:
+    driver: bridge
+
+volumes:
+  mongodb_data:
+  redis_data:
