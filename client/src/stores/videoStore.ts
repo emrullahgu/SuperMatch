@@ -96,7 +96,7 @@ export const useVideoStore = create<VideoStore>((set, get) => ({
         await peerConnection.setRemoteDescription(new RTCSessionDescription(offer));
         const answer = await peerConnection.createAnswer();
         await peerConnection.setLocalDescription(answer);
-        socket.emit('webrtc:answer', answer);
+        socket.emit('webrtc:answer', { type: 'answer' as const, sdp: answer.sdp! });
       } catch (error) {
         console.error('Offer işleme hatası:', error);
       }
@@ -131,7 +131,8 @@ export const useVideoStore = create<VideoStore>((set, get) => ({
       .createOffer()
       .then((offer) => peerConnection.setLocalDescription(offer))
       .then(() => {
-        socket.emit('webrtc:offer', peerConnection.localDescription!);
+        const desc = peerConnection.localDescription!;
+        socket.emit('webrtc:offer', { type: 'offer' as const, sdp: desc.sdp! });
       })
       .catch((error) => console.error('Offer oluşturma hatası:', error));
   },
