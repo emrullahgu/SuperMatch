@@ -67,7 +67,7 @@ Omegle, Azar, Chatroulette ve benzeri platformların en iyi özelliklerini birle
 
 1. **Depoyu klonlayın**
 ```bash
-git clone https://github.com/yourusername/supermatch.git
+git clone https://github.com/emrullahgu/supermatch.git
 cd supermatch
 ```
 
