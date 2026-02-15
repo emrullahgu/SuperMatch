@@ -9,7 +9,7 @@ const withPWA = require('next-pwa')({
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: ['localhost', 'your-project.supabase.co'],
+    domains: ['localhost', 'ordtiljbhnfxgqmsipnl.supabase.co'],
     formats: ['image/avif', 'image/webp'],
   },
   env: {
@@ -18,9 +18,9 @@ const nextConfig = {
     NEXT_PUBLIC_SUPABASE_URL: process.env.NEXT_PUBLIC_SUPABASE_URL,
     NEXT_PUBLIC_SUPABASE_ANON_KEY: process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
   },
-  experimental: {
-    optimizeCss: true,
-  },
+  // experimental: {
+  //   optimizeCss: true, // Disabled - requires critters module
+  // },
   output: 'standalone',
 };
 
