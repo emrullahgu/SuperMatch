@@ -1,53 +1,75 @@
-# SuperMatch - Modern Video Chat Platform
+# 🎥 SuperMatch - Modern Video Chat Platform
 
-Omegle, Azar, Chatroulette ve benzeri platformların en iyi özelliklerini birleştiren modern bir rastgele video chat uygulaması.
+<div align="center">
 
-## 🌟 Özellikler
+**Yeni insanlarla tanış, sohbet et, eğlen!**
 
-### Temel Özellikler
-- ✅ **Rastgele Video Eşleşme** - WebRTC ile yüksek kaliteli video görüşme
-- ✅ **Anlık Mesajlaşma** - Real-time text chat
-- ✅ **Skip/Next** - Yeni kişilerle hızlı eşleşme
-- ✅ **Filtreler** - Cinsiyet, konum, yaş filtreleri
-- ✅ **İlgi Alanları** - Ortak ilgi alanlarına göre eşleşme
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+[![Node](https://img.shields.io/badge/node-%3E%3D18.0.0-brightgreen)](https://nodejs.org)
+[![Next.js](https://img.shields.io/badge/Next.js-14-black)](https://nextjs.org)
 
-### Gelişmiş Özellikler
-- 🎯 **Akıllı Eşleştirme** - AI destekli uyumlu kişi bulma
-- 🛡️ **Güvenlik Sistemi** - Otomatik içerik moderasyonu
-- 🚫 **Raporlama & Blok** - Kullanıcı güvenliği
-- 📊 **Canlı İstatistikler** - Online kullanıcı sayısı
-- 🌍 **Çoklu Dil** - Türkçe, İngilizce ve daha fazlası
-- 🎭 **Anonim Mod** - Kayıt olmadan kullanım
-- 👤 **Profil Sistemi** - Kayıtlı kullanıcı avantajları
-- 💎 **Premium Özellikler** - Gelişmiş filtreler ve öncelik
-- 📱 **Responsive** - Mobil ve masaüstü uyumlu
-- 🎨 **Arka Plan Bulanıklaştırma** - Mahremiyet için virtual backgrounds
+[🌐 Demo](https://supermatch.netlify.app) | [📖 Dokümantasyon](DEPLOYMENT.md) | [🔧 Supabase Setup](SUPABASE_SETUP.md)
 
-### Güvenlik Özellikleri
-- 🔒 **Şifreli İletişim** - End-to-end encryption
-- 🤖 **AI Moderasyon** - Uygunsuz içerik tespiti
-- 📸 **Ekran Görüntüsü Koruması** - Screenshot detection
-- ⚠️ **Kullanıcı Doğrulama** - Spam ve bot koruması
-- 📝 **İçerik Filtreleme** - Otomatik uyarı sistemi
+</div>
 
-## 🚀 Teknoloji Stack
+---
+
+Omegle, Azar, Chatroulette ve benzeri platformların **en iyi özelliklerini** birleştiren modern, güvenli ve kullanıcı dostu rastgele video chat uygulaması.
+
+## ✨ Özellikler
+
+### 🎯 Temel Özellikler
+- ✅ **Rastgele Video Eşleşme** - Dünyanın her yerinden insanlarla tanış
+- ✅ **Gerçek Zamanlı Sohbet** - Anlık metin mesajlaşma (Socket.IO)
+- ✅ **WebRTC Video/Audio** - Düşük gecikmeli, yüksek kaliteli görüşme
+- ✅ **Skip Özelliği** - Beğenmediğin kişiyi atla, yeni biriyle eşleş
+- ✅ **Filtreler** - Cinsiyet, yaş, ülke ve ilgi alanlarına göre filtrele
+
+### 🔐 Güvenlik & Moderasyon
+- ✅ **Kullanıcı Kaydı** - Email veya OAuth (Google, GitHub) ile güvenli giriş
+- ✅ **Supabase Auth** - Modern, güvenilir authentication sistemi
+- ✅ **Rapor Sistemi** - Uygunsuz davranışları bildir
+- ✅ **Engelleme** - İstenmeyen kullanıcıları engelle
+- ✅ **Row Level Security** - Database seviyesinde veri güvenliği
+- ✅ **Veri Gizliliği** - KVKK uyumlu, şifreli depolama
+
+### 💎 Premium Özellikler (Stripe ile)
+- 🔒 **Cinsiyet Filtresi** - Sadece erkek veya kadın kullanıcılarla eşleş
+- 🔒 **Yaş Aralığı** - Belirli yaş grubundan kişilerle sohbet et
+- 🔒 **Ülke Seçimi** - İstediğin ülkeden insanlarla tanış
+- 🔒 **İlgi Alanları** - Ortak hobisi olanları bul
+- 🔒 **Reklamsız Deneyim** - Kesintisiz kullanım
+- 🔒 **Öncelikli Eşleşme** - Daha hızlı eşleş
+
+**Fiyatlar:**
+- 💳 Aylık: ₺49
+- 💳 Yıllık: ₺349 (40% indirim!)
+
+### 📱 Mobil & PWA
+- ✅ **Responsive Tasarım** - Tüm cihazlarda mükemmel görünüm
+- ✅ **Progressive Web App** - Ana ekrana ekle, uygulama gibi kullan
+- ✅ **Offline Destek** - İnternet yokken bile bazı özellikler çalışır
+- ✅ **Touch Friendly** - Mobil cihazlar için optimize edilmiş UI
+
+## 🛠️ Teknoloji Stack
 
 ### Frontend
-- **Next.js 14** - React framework
-- **TypeScript** - Type safety
-- **Tailwind CSS** - Modern styling
-- **WebRTC** - Peer-to-peer video/audio
-- **Socket.io Client** - Real-time communication
-- **Zustand** - State management
-- **Framer Motion** - Animasyonlar
+- **Framework**: Next.js 14 (App Router) + TypeScript
+- **UI**: React 18 + Tailwind CSS + Framer Motion
+- **State**: Zustand (auth, video, socket stores)
+- **Forms**: React Hook Form + Zod
+- **Real-time**: Socket.IO Client
+- **Video**: WebRTC API
+- **PWA**: next-pwa
 
 ### Backend
-- **Node.js + Express** - Web server
-- **Socket.io** - WebSocket server
-- **TypeScript** - Type safety
-- **MongoDB** - Veritabanı
-- **Redis** - Caching ve queue
-- **JWT** - Authentication
+- **Runtime**: Node.js + Express
+- **WebSocket**: Socket.IO
+- **Database**: Supabase (PostgreSQL)
+- **Authentication**: Supabase Auth (Email + OAuth)
+- **Payments**: Stripe (Subscriptions + Webhooks)
+- **Storage**: Supabase Storage (Avatars)
+- **Caching**: Redis (opsiyonel)
 - **TensorFlow.js** - AI moderasyon
 
 ### DevOps & Deployment

@@ -1,12 +1,15 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { Video, MessageCircle, Users, Shield, Zap, Globe } from 'lucide-react';
+import { Video, MessageCircle, Users, Shield, Zap, Globe, Crown } from 'lucide-react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
+import { useAuthStore } from '@/stores/authStore';
 
 export default function HomePage() {
   const [onlineUsers, setOnlineUsers] = useState(0);
+  const { user } = useAuthStore();
 
   useEffect(() => {
     // Simulated online users counter
@@ -22,15 +25,33 @@ export default function HomePage() {
       {/* Header */}
       <header className="container mx-auto px-4 py-6">
         <nav className="flex items-center justify-between">
-          <div className="flex items-center space-x-2">
-            <Video className="w-8 h-8 text-primary-600" />
-            <h1 className="text-2xl font-bold gradient-text">SuperMatch</h1>
-          </div>
+          <Link href="/" className="flex items-center space-x-3">
+            <Image 
+              src="/logo/supermatchlogo.png" 
+              alt="SuperMatch" 
+              width={150}
+              height={50}
+              className="cursor-pointer"
+            />
+          </Link>
           <div className="flex items-center space-x-4">
-            <span className="text-sm text-gray-600 dark:text-gray-400">
+            <span className="text-sm text-gray-600 dark:text-gray-400 hidden sm:block">
               <span className="inline-block w-2 h-2 bg-green-500 rounded-full animate-pulse mr-2"></span>
               {onlineUsers.toLocaleString()} çevrimiçi
             </span>
+            <Link href="/premium" className="text-sm font-semibold text-yellow-600 hover:text-yellow-700 flex items-center space-x-1">
+              <Crown className="w-4 h-4" />
+              <span className="hidden sm:inline">Premium</span>
+            </Link>
+            {user ? (
+              <Link href="/profile" className="btn-secondary text-sm py-2 px-4">
+                Profil
+              </Link>
+            ) : (
+              <Link href="/auth" className="btn-primary text-sm py-2 px-4">
+                Giriş Yap
+              </Link>
+            )}
           </div>
         </nav>
       </header>
