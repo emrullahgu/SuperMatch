@@ -11,6 +11,7 @@ const nextConfig = {
   images: {
     domains: ['localhost', 'ordtiljbhnfxgqmsipnl.supabase.co'],
     formats: ['image/avif', 'image/webp'],
+    unoptimized: process.env.NODE_ENV === 'development',
   },
   env: {
     NEXT_PUBLIC_API_URL: process.env.NEXT_PUBLIC_API_URL,
